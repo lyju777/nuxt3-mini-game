@@ -20,12 +20,12 @@ body {
 body {
   max-width: 768px; // 모바일 너비로 제한
   margin: 0 auto;
-  background-color: #f4f4f4;
+  background-color: $color-primary-300;
 }
 
 // 모바일 사이즈 외부 배경을 검정색으로 설정
 html {
-  background-color: rgb(231, 231, 231);
+  background-color: $color-primary-200;
   display: flex;
   justify-content: center;
 }

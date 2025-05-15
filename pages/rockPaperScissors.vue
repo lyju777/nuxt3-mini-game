@@ -1,13 +1,12 @@
 <template>
-  <div>
-    <h1>가위바위보 게임</h1>
-    <p>
-      선택하세요: <button @click="onUserSelect('가위')">가위</button>
+  <div class="container">
+    <div class="container__buttons">
+      <button @click="onUserSelect('가위')">가위</button>
       <button @click="onUserSelect('바위')">바위</button>
       <button @click="onUserSelect('보')">보</button>
-    </p>
-    <p>컴퓨터 선택: {{ computerChoice }}</p>
-    <p>결과: {{ result }}</p>
+    </div>
+    <div>컴퓨터 선택: {{ computerChoice }}</div>
+    <div>결과: {{ result }}</div>
   </div>
 </template>
 
@@ -19,9 +18,9 @@ const computerChoice = ref("");
 const result = ref("");
 
 const generateComputerChoice = () => {
-  const options = ["가위", "바위", "보"];
-  const randomIndex = Math.floor(Math.random() * options.length);
-  computerChoice.value = options[randomIndex];
+  const options = ref(["가위", "바위", "보"]);
+  const randomIndex = Math.floor(Math.random() * options.value.length);
+  computerChoice.value = options.value[randomIndex];
 };
 
 const determineWinner = (user: string, computer: string) => {
@@ -42,9 +41,25 @@ const onUserSelect = (choice: string) => {
 };
 </script>
 
-<style>
-button {
-  margin: 5px;
-  padding: 10px;
+<style lang="scss" scoped>
+.container {
+  @include flex-center;
+  flex-direction: column;
+  height: 100vh;
+
+  &__buttons {
+    button {
+      margin: 0.5rem;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid $color-gray-100;
+
+      &:hover {
+        cursor: pointer;
+        background-color: $color-gray-500;
+        color: $color-white-000;
+      }
+    }
+  }
 }
 </style>

@@ -2,7 +2,8 @@
   <header>
     <div class="header__container">
       <span>
-        <h1 class="header__container__title">심심풀이</h1>
+        <h1 @click="returnHome" class="header__container__title">Nuxtendo</h1>
+        <!-- <h1 class="header__container__title">랭킹</h1> -->
       </span>
     </div>
   </header>
@@ -14,8 +15,8 @@ import { useRouter } from "vue-router";
 const router = useRouter();
 
 // 뒤로가기 함수
-const goBack = () => {
-  router.go(-1);
+const returnHome = () => {
+  router.push("/");
 };
 </script>
 
@@ -29,7 +30,7 @@ header {
   max-width: 768px;
   margin: 0 auto;
   z-index: 999;
-  background-color: #419aff;
+  background-color: $color-primary-100;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .header__container {
@@ -42,10 +43,11 @@ header {
     padding: 0 1rem;
 
     &__title {
+      cursor: pointer;
       font-size: 1.3rem;
       font-weight: 600;
       display: inline-block;
-      color: #ffffff;
+      color: $color-white-000;
     }
   }
 }
