@@ -18,13 +18,13 @@ export default defineNuxtConfig({
     },
   },
 
-  //   app: {
-  //     head: {
-  //       title: "Nuxtendo",
-  //       htmlAttrs: {
-  //         lang: "ko",
-  //       },
-  //       link: [{ rel: "icon", type: "image/svg+xml", href: "/public/logo.svg" }],
-  //     },
-  //   },
+  app: {
+    head: {
+      title: "Nuxtendo",
+      htmlAttrs: {
+        lang: "ko",
+      },
+      // link: [{ rel: "icon", type: "image/svg+xml", href: "/public/logo.svg" }],
+    },
+  },
 });

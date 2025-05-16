@@ -1,9 +1,16 @@
 <template>
   <header>
     <div class="header__container">
-      <span>
-        <h1 @click="returnHome" class="header__container__title">Nuxtendo</h1>
-        <!-- <h1 class="header__container__title">랭킹</h1> -->
+      <span class="header__container__title">
+        <img
+          class="header__container__title__home"
+          @click="returnHome"
+          src="@/assets/icon/header_title.png"
+        />
+        <img
+          class="header__container__title__ranking"
+          src="@/assets/icon/header_ranking.png"
+        />
       </span>
     </div>
   </header>
@@ -14,7 +21,6 @@ import { useRouter } from "vue-router";
 
 const router = useRouter();
 
-// 뒤로가기 함수
 const returnHome = () => {
   router.push("/");
 };
@@ -30,7 +36,7 @@ header {
   max-width: 768px;
   margin: 0 auto;
   z-index: 999;
-  background-color: $color-primary-100;
+  background-color: $color-primary-500;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 
   .header__container {
@@ -39,15 +45,29 @@ header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 3.5rem;
+    height: 4.2rem;
     padding: 0 1rem;
 
     &__title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      width: 100%;
+
       cursor: pointer;
       font-size: 1.3rem;
       font-weight: 600;
-      display: inline-block;
       color: $color-white-000;
+      flex: 1;
+      display: flex;
+      align-items: center;
+
+      &__home {
+        width: 25%;
+      }
+      &__ranking {
+        width: 17%;
+      }
     }
   }
 }
