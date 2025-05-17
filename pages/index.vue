@@ -2,11 +2,14 @@
   <div class="container">
     <div class="container__tabs">
       <h1>START GAME</h1>
-      <button v-for="game in games" :key="game.path">
-        <NuxtLink style="color: inherit" :to="game.path">{{
-          game.name
-        }}</NuxtLink>
-      </button>
+      <NuxtLink
+        v-for="game in games"
+        :key="game.path"
+        :to="game.path"
+        class="button-link"
+      >
+        {{ game.name }}
+      </NuxtLink>
     </div>
   </div>
 </template>
@@ -17,6 +20,7 @@ import { NuxtLink } from "#components";
 const games = [
   { name: "가위바위보", path: "/rockPaperScissors" },
   { name: "빙고", path: "/bingo" },
+  { name: "숫자 맞추기", path: "/numberGuess" },
 ];
 </script>
 
@@ -33,7 +37,7 @@ const games = [
       text-align: center;
       color: $color-primary-400;
     }
-    button {
+    .button-link {
       display: block;
       border: 1px solid $color-primary-400;
       padding: 0.7rem 1rem;
@@ -41,6 +45,8 @@ const games = [
       margin: 0.5rem;
       width: 300px;
       color: $color-primary-400;
+      text-decoration: none;
+      text-align: center;
 
       &:hover {
         cursor: pointer;

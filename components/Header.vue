@@ -63,10 +63,10 @@ header {
       align-items: center;
 
       &__home {
-        width: 25%;
+        width: 140px;
       }
       &__ranking {
-        width: 17%;
+        width: 100px;
       }
     }
   }

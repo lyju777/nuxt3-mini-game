@@ -8,4 +8,30 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+}
+
+@mixin common-buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+@mixin common-button {
+  margin-top: 20px;
+  width: 100px;
+  height: 40px;
+  font-size: 1rem;
+  border: 2px solid $color-primary-400;
+  background-color: $color-primary-400;
+  color: $color-white-000;
+  border-radius: 30px;
+  cursor: pointer;
+}
+
+@mixin header-height {
+  height: calc(100vh - 67.19px);
+  margin-top: 67.19px;
 }

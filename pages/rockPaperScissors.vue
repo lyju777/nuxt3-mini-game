@@ -1,11 +1,19 @@
 <template>
   <div class="container">
+    <div class="container__game__info">
+        <h1>가위바위보 게임</h1>
+        <p>컴퓨터에게 몇번 이길 수 있을까요?</p>
+      </div>
+      <div class="container__winCount">이긴 횟수: {{ winCount }}</div>
     <div class="container__buttons">
-      <img src="../assets/icon/가위-색상변경.png" @click="onUserSelect('가위')"></img>
-      <img src="../assets/icon/바위-색상변경.png" @click="onUserSelect('바위')"></img>
-      <img src="../assets/icon/보-색상변경.png" @click="onUserSelect('보')"></img>
+      <img src="../assets/icon/scissors.png" @click="onUserSelect('가위')"></img>
+      <img src="../assets/icon/rock.png" @click="onUserSelect('바위')"></img>
+      <img src="../assets/icon/paper.png" @click="onUserSelect('보')"></img>
     </div>
-    <div class="container__winCount">이긴횟수: {{ winCount }}</div>
+    <span class="container__common-buttons">
+      <button @click="goBack">뒤로가기</button>
+      <button @click="resetGame">다시하기</button>
+    </span>  
   </div>
 </template>
 
@@ -52,20 +60,42 @@ const onUserSelect = (choice: string) => {
   }, 0);
 };
 
+const goBack = () => {
+  navigateTo("/");
+};
+
+const resetGame = () => {
+  userChoice.value = "";
+  computerChoice.value = "";
+  result.value = "";
+  winCount.value = 0;
+};
+
 </script>
 
 <style lang="scss" scoped>
 .container {
   @include flex-center;
-  flex-direction: column;
-  height: 100vh;
+  @include header-height;
+
+  &__game__info {
+    text-align: center;
+
+  h1 {
+    color: $color-primary-400;
+  }
+
+  }
 
   &__buttons {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 2rem;
+
     button {
       margin: 0.5rem;
       padding: 0.5rem 1rem;
@@ -80,8 +110,8 @@ const onUserSelect = (choice: string) => {
     }
     img {
        cursor: pointer;
-        opacity: 0.9;
-        width: 12%;
+        opacity: 0.7;
+        width: 80px;
       }
 
       img:hover {
@@ -90,9 +120,16 @@ const onUserSelect = (choice: string) => {
   }
 
   &__winCount {
-    margin-top: 2rem;
-    font-size: 1.25rem;
+    margin-top: 1rem;
     color: $color-primary-400;
+  }
+
+  &__common-buttons {
+    @include common-buttons;
+
+    button {
+      @include common-button;
+    }
   }
 }
 </style>

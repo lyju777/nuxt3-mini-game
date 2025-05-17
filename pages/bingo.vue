@@ -1,5 +1,9 @@
 <template>
   <div class="container">
+    <div class="container__game__info">
+      <h1>빙고 게임</h1>
+      <p>상대보다 먼저 빙고를 완성해보세요!</p>
+    </div>
     <div class="container__board">
       <button
         v-for="(cell, index) in board"
@@ -10,7 +14,10 @@
         {{ cell }}
       </button>
     </div>
-    <button class="container__reset" @click="resetGame">다시하기</button>
+    <span class="container__common-buttons">
+      <button @click="goBack">뒤로가기</button>
+      <button @click="resetGame">다시하기</button>
+    </span>
   </div>
 </template>
 
@@ -61,6 +68,10 @@ function checkWinner(board: string[]): string | null {
   return null;
 }
 
+const goBack = () => {
+  navigateTo("/");
+};
+
 function resetGame() {
   board.value = Array(9).fill("");
   currentPlayer.value = "X";
@@ -69,38 +80,40 @@ function resetGame() {
 
 <style lang="scss" scoped>
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100vh;
-  justify-content: center;
+  @include flex-center;
+  @include header-height;
+
+  &__game__info {
+    text-align: center;
+
+    h1 {
+      color: $color-primary-400;
+    }
+  }
 
   &__board {
     display: grid;
-    grid-template-columns: repeat(3, 100px);
-    grid-gap: 2px;
+    grid-template-columns: repeat(3, 90px);
+    grid-gap: 1px;
+    margin-top: 1rem;
 
     .cell {
-      width: 100px;
-      height: 100px;
+      width: 90px;
+      height: 90px;
       font-size: 2rem;
       border: 2px solid $color-primary-400;
-      background-color: #f0f0f000;
+      border-radius: 3px;
       color: $color-primary-400;
       cursor: pointer;
     }
   }
 
-  &__reset {
-    margin-top: 20px;
-    width: 100px;
-    height: 50px;
-    font-size: 1rem;
-    border: 2px solid $color-primary-400;
-    background-color: $color-primary-400;
-    color: $color-white-000;
-    border-radius: 30px;
-    cursor: pointer;
+  &__common-buttons {
+    @include common-buttons;
+
+    button {
+      @include common-button;
+    }
   }
 }
 </style>
